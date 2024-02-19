@@ -35,6 +35,7 @@ TicketLog tl;
 
 
 	record Res(String Message){}
+	record Ticket(int ticket_no){}
 	@PostMapping("/user")
 	public Res create(@RequestBody User user) {
 		Res response=new Res("User created");
@@ -63,6 +64,15 @@ TicketLog tl;
 	public List<BookingBody> getTicket(@PathVariable String name){
 				return tl.getTicket(name);
 
+	}
+	@DeleteMapping("/cancelTicket")
+	public Res cancelTicket(@RequestBody Ticket t){
+
+				 if( tl.cancelTicket(t.ticket_no())){
+					 return new Res("Ticket no " + t.ticket_no() + " is canceled.");
+				 } else {
+					 return new Res("Invalid ticket no");
+				 }
 	}
 
 }

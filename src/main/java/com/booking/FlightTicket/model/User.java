@@ -27,4 +27,28 @@ public class User {
     public String password;
     @OneToMany(mappedBy = "_user")
     public List<Bookings> booking;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Bookings> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Bookings> booking) {
+        this.booking = booking;
+    }
 }

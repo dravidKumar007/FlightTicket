@@ -10,13 +10,6 @@ public class UserLog {
     public UserLog(CurdUser cu) {
         this.cu = cu;
     }
-//
-// public UserLog(){
-//
-// }
-
-
-
     public void addUser(User user) {
         cu.save(user);
     }

@@ -1,11 +1,13 @@
 package com.booking.FlightTicket.controller;
 
+import com.booking.FlightTicket.FlightTicketApplication;
 import com.booking.FlightTicket.model.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TicketLog {
     CurdUser cu;
@@ -48,5 +50,19 @@ List<BookingBody> bookingBody = new ArrayList<BookingBody>();
          bookingBody.add(bb);
         }
         return bookingBody;
+    }
+
+    public boolean cancelTicket(int ticketNo) {
+       Optional<Bookings> b= cb.findById(ticketNo);
+if(b.isPresent()){
+
+   cb.delete(b.get());
+
+   return true;
+
+}
+else {
+    return false;
+}
     }
 }
